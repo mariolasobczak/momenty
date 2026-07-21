@@ -5,14 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Momenty · Podgląd kierunków</title>
 <style>
-  :root{--cream:#efe4d3;--cream2:#e7dac6;--terra:#b6472f;--brown:#3d271c;--muted:rgba(61,39,28,.65);--line:rgba(182,71,47,.35)}
+  :root{--cream:#efe4d3;--cream2:#e7dac6;--terra:#b6472f;--brown:#3d271c;--olive:#7d8a5c;--muted:rgba(61,39,28,.65);--line:rgba(182,71,47,.35);--bonus-bg:#f3e6cf;--bonus-ink:#8a5f22;--bonus-border:#c99a4f}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--cream);color:var(--brown);line-height:1.6;min-height:100vh;padding:6vw}
   .wrap{max-width:1100px;margin:0 auto}
   .kicker{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--terra)}
   h1{font-size:clamp(1.8rem,5vw,3rem);margin:.8rem 0 1rem;font-weight:600}
+  h2{font-family:inherit}
   p.lead{color:var(--muted);max-width:60ch;margin-bottom:3rem;font-size:1.05rem}
-  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:3rem}
+
+  .greeting{background:var(--cream2);border:1px solid var(--line);border-radius:14px;padding:2.2rem 2.4rem;margin-bottom:3.5rem}
+  .greeting h1{margin-top:.6rem}
+  .greeting p{color:var(--brown);max-width:70ch;font-size:1.02rem;margin-bottom:.9rem}
+  .greeting p:last-child{margin-bottom:0}
+  .greeting .sign{margin-top:1.4rem;font-size:.9rem;color:var(--muted);font-style:italic}
+
+  section{margin-bottom:3.5rem}
+  .sec-head{display:flex;align-items:baseline;gap:.7rem;margin-bottom:1.1rem}
+  .sec-num{font-size:.95rem;color:var(--terra);font-weight:700}
+  .sec-head h2{font-size:1.5rem;margin:0}
+  .sec-sub{color:var(--muted);font-size:.92rem;max-width:66ch;margin:-.4rem 0 1.5rem}
+
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
   @media(max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:560px){.cards{grid-template-columns:1fr}}
   .card{display:block;border:1px solid var(--line);border-radius:10px;padding:1.6rem;text-decoration:none;color:inherit;transition:.2s;background:var(--cream2)}
@@ -24,46 +38,100 @@
   .card.live{background:var(--terra);color:var(--cream);border-color:var(--terra)}
   .card.live .n,.card.live .go{color:var(--cream)}
   .card.live p{color:rgba(239,228,211,.85)}
+
   .video-section{border-top:1px solid var(--line);padding-top:2.5rem}
   .video-section .kicker{margin-bottom:.6rem}
   .video-section h2{font-size:1.5rem;margin-bottom:.8rem}
   .video-section p{color:var(--muted);max-width:60ch;margin-bottom:1.5rem}
   video{width:100%;max-width:480px;border-radius:10px;border:1px solid var(--line);display:block}
+
+  /* OFERTA */
+  .oferta{border-top:1px solid var(--line);padding-top:2.8rem}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  @media(max-width:820px){.tier-grid{grid-template-columns:1fr}}
+  .tier{background:var(--cream2);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.5rem 1.6rem;display:flex;flex-direction:column}
+  .tier h3{font-size:1.15rem;margin:0 0 .3rem}
+  .tier .price{font-size:1.6rem;font-weight:700;color:var(--terra);margin-bottom:.6rem}
+  .tier .price span{font-size:.8rem;color:var(--muted);font-weight:400}
+  .tier .for-whom{font-size:.83rem;font-style:italic;color:var(--muted);margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+  .tier ul{list-style:none;padding:0;margin:0;display:grid;gap:.5rem;flex:1}
+  .tier li{font-size:.85rem;padding-left:1.1rem;position:relative}
+  .tier li::before{content:'·';position:absolute;left:0;color:var(--terra);font-weight:700}
+  .tier li.inherit{color:var(--muted);font-style:italic}
+  .tier li.inherit::before{content:'+'}
+  .tier li.bonus{background:var(--bonus-bg);color:var(--bonus-ink);border:1px solid var(--bonus-border);border-radius:6px;padding:.5rem .6rem .5rem 1.6rem;margin-top:.3rem;font-weight:600}
+  .tier li.bonus::before{content:'★';color:var(--bonus-ink);left:.5rem}
+
+  .common-note{margin-top:1.6rem;background:var(--cream2);border:1px solid var(--line);border-radius:8px;padding:1rem 1.2rem;font-size:.87rem}
+
+  .bonus-callout{background:var(--bonus-bg);border:1px solid var(--bonus-border);border-radius:10px;padding:1.2rem 1.4rem}
+  .bonus-callout .tag{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--bonus-ink);display:block;margin-bottom:.5rem}
+  .bonus-callout p{font-size:.9rem;color:var(--brown);margin:0 0 .5rem}
+  .bonus-callout p:last-child{margin-bottom:0}
+  .bonus-callout .fine{font-size:.78rem;color:var(--muted)}
+
+  .needs-group{margin-bottom:1.4rem}
+  .needs-group h3{font-size:.9rem;font-weight:700;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  .needs-group h3 .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .needs-group.must h3 .dot{background:var(--terra)}
+  .needs-group.opt h3 .dot{background:var(--olive)}
+  .needs-list{list-style:none;padding:0;margin:0;display:grid;gap:.55rem}
+  .needs-list li{background:var(--cream2);border:1px solid var(--line);border-radius:8px;padding:.7rem 1rem;font-size:.87rem}
+
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--cream2)}
+  table.sub-table{border-collapse:collapse;width:100%;min-width:560px;font-size:.85rem}
+  table.sub-table th,table.sub-table td{padding:.7rem 1rem;text-align:center;border-bottom:1px solid var(--line)}
+  table.sub-table td:first-child,table.sub-table th:first-child{text-align:left;font-weight:600}
+  table.sub-table thead th{font-size:1rem;color:var(--terra);background:var(--cream);font-weight:700}
+  table.sub-table thead th:first-child{background:transparent}
+  table.sub-table tbody tr:last-child td{border-bottom:none}
+  table.sub-table td.yes{color:var(--olive);font-weight:700}
+  table.sub-table td.no{color:var(--muted);opacity:.5}
+  table.sub-table td.val{font-weight:600}
+
   footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <p class="kicker">Momenty · Bar &amp; Restaurant · Łowicz</p>
-  <h1>Cztery kierunki wizualne strony</h1>
-  <p class="lead">Cztery pełne wersje homepage do porównania. Kliknij, żeby zobaczyć pełną stronę.</p>
 
-  <div class="cards">
-    <a class="card" href="kierunek-1-dark-moody.html">
-      <span class="n">Kierunek 01</span>
-      <h2>Dark &amp; Moody</h2>
-      <p>Wieczorny klimat cocktail baru: ciemne tło, złoto i głęboka zieleń.</p>
-      <span class="go">Zobacz stronę →</span>
-    </a>
-    <a class="card" href="kierunek-2-editorial.html">
-      <span class="n">Kierunek 02</span>
-      <h2>Editorial</h2>
-      <p>Strona jak magazyn — rozdziały, duża typografia, opowieść o miejscu.</p>
-      <span class="go">Zobacz stronę →</span>
-    </a>
-    <a class="card" href="kierunek-3-warm-bistro.html">
-      <span class="n">Kierunek 03</span>
-      <h2>Warm Bistro</h2>
-      <p>Terakota, drewno, rzemieślnicza przytulność.</p>
-      <span class="go">Zobacz stronę →</span>
-    </a>
-    <a class="card live" href="https://terazstrona-momenty.vercel.app/" target="_blank" rel="noopener">
-      <span class="n">Kierunek 04</span>
-      <h2>Kolorystyka lokalu</h2>
-      <p>Paleta zainspirowana wprost Waszym wnętrzem — żywa wersja robocza.</p>
-      <span class="go">Zobacz stronę →</span>
-    </a>
+  <div class="greeting">
+    <p class="kicker">Momenty · Bar &amp; Restaurant · Łowicz</p>
+    <h1>Dziękujemy za dzisiejsze spotkanie!</h1>
+    <p>Cieszymy się, że mogliśmy razem porozmawiać o tym, jak ma wyglądać Wasza nowa strona. Poniżej zebraliśmy wszystko w jednym miejscu: cztery kierunki wizualne do wyboru, próbkę tego, co możemy zrobić z nowym menu, oraz pełną ofertę razem z tym, czego jeszcze od Was potrzebujemy.</p>
+    <p class="sign">Do zobaczenia — ekipa terazstrona.pl</p>
   </div>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Cztery kierunki wizualne strony</h2></div>
+    <p class="sec-sub">Cztery pełne wersje homepage do porównania. Kliknij, żeby zobaczyć pełną stronę.</p>
+    <div class="cards">
+      <a class="card" href="kierunek-1-dark-moody.html">
+        <span class="n">Kierunek 01</span>
+        <h2>Dark &amp; Moody</h2>
+        <p>Wieczorny klimat cocktail baru: ciemne tło, złoto i głęboka zieleń.</p>
+        <span class="go">Zobacz stronę →</span>
+      </a>
+      <a class="card" href="kierunek-2-editorial.html">
+        <span class="n">Kierunek 02</span>
+        <h2>Editorial</h2>
+        <p>Strona jak magazyn — rozdziały, duża typografia, opowieść o miejscu.</p>
+        <span class="go">Zobacz stronę →</span>
+      </a>
+      <a class="card" href="kierunek-3-warm-bistro.html">
+        <span class="n">Kierunek 03</span>
+        <h2>Warm Bistro</h2>
+        <p>Terakota, drewno, rzemieślnicza przytulność.</p>
+        <span class="go">Zobacz stronę →</span>
+      </a>
+      <a class="card live" href="https://terazstrona-momenty.vercel.app/" target="_blank" rel="noopener">
+        <span class="n">Kierunek 04</span>
+        <h2>Kolorystyka lokalu</h2>
+        <p>Paleta zainspirowana wprost Waszym wnętrzem — żywa wersja robocza.</p>
+        <span class="go">Zobacz stronę →</span>
+      </a>
+    </div>
+  </section>
 
   <div class="video-section">
     <p class="kicker">Próbka</p>
@@ -72,6 +140,173 @@
     <video controls playsinline poster="images/menu-burrata.webp">
       <source src="video/buratta.mp4" type="video/mp4">
     </video>
+  </div>
+
+  <div class="oferta">
+
+    <section>
+      <div class="sec-head"><span class="sec-num">02</span><h2>Pakiety strony</h2></div>
+      <p class="sec-sub">Każdy kolejny pakiet zawiera wszystko z poprzedniego, plus dodatkowe elementy.</p>
+
+      <div class="tier-grid">
+        <div class="tier">
+          <h3>Strona Start</h3>
+          <div class="price">999 zł <span>netto</span></div>
+          <div class="for-whom">Dla jednoosobowych działalności i lokalnych biznesów, które potrzebują pierwszej, profesjonalnej obecności w sieci.</div>
+          <ul>
+            <li>Landing page z 5 sekcjami (Hero, Menu/Oferta, Eventy, O nas + opinie, Kontakt — lub inny wybrany zestaw)</li>
+            <li>Domena .pl + certyfikat SSL</li>
+            <li>Zgodność z RODO + polityka prywatności</li>
+            <li>Anonimowa analityka Umami</li>
+            <li>Mapa Google</li>
+            <li>Kliknij i zadzwoń (click-to-call)</li>
+            <li>Podstawowe SEO i GEO (widoczność w wyszukiwarkach AI)</li>
+            <li>Aplikacja do zarządzania stroną — treści, zdjęcia, statystyki</li>
+            <li>Sekcja FAQ</li>
+            <li>Stały kontakt z nami na każdym etapie wdrożenia</li>
+          </ul>
+        </div>
+
+        <div class="tier">
+          <h3>Strona Firmowa</h3>
+          <div class="price">1999 zł <span>netto</span></div>
+          <div class="for-whom">Dla firm, które chcą pokazać więcej niż jedną stronę — osobne podstrony na usługi, eventy czy ofertę, plus łatwy kontakt dla klientów.</div>
+          <ul>
+            <li class="inherit">Wszystko z pakietu Strona Start</li>
+            <li>Strona główna + 3 podstrony (np. Menu, Eventy, O nas + Kontakt)</li>
+            <li>Formularz kontaktowy (np. eventowy) + firmowy adres e-mail</li>
+            <li>Regulamin strony</li>
+            <li>Rozszerzone GEO — pełna optymalizacja pod wyszukiwarki AI</li>
+            <li class="bonus">Bonus dla Momentów: 1 film wygenerowany pod nowe menu</li>
+          </ul>
+        </div>
+
+        <div class="tier">
+          <h3>Strona + Fundament SEO</h3>
+          <div class="price">2999 zł <span>netto</span></div>
+          <div class="for-whom">Dla firm, które traktują stronę jako inwestycję długoterminową i chcą regularnie publikować treści oraz realnie rosnąć w wyszukiwarce.</div>
+          <ul>
+            <li class="inherit">Wszystko z pakietu Strona Firmowa</li>
+            <li>Strona główna + 6 podstron (np. Menu, Eventy, Momenty na Żywo, Aktualności, Blog z 5 startowymi artykułami, O nas + Kontakt)</li>
+            <li>Fundament SEO: research fraz kluczowych, architektura strony, strategia treści</li>
+            <li>Zaawansowane SEO, GEO i AEO</li>
+            <li>Opieka 1:1 na każdym etapie projektu i dalszej współpracy — sesja strategiczna przed startem + kwartalne rozmowy o wynikach</li>
+            <li class="bonus">Bonus dla Momentów: 2 filmy wygenerowane pod nowe menu</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="common-note"><b>Wspólne dla wszystkich pakietów:</b> domena, hosting, SSL, RODO i polityka prywatności — pokryte przez pierwszy rok. Po roku płatność wyłącznie za domenę i hosting.</div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Bonus dla Momentów</h2></div>
+      <p class="sec-sub">To dodatek indywidualny tylko dla Was — nie standardowy element żadnego pakietu w naszej ogólnej ofercie.</p>
+      <div class="bonus-callout">
+        <span class="tag">★ Bonus na pewno</span>
+        <p><b>Strona Firmowa (1999 zł):</b> 1 film wygenerowany pod nowe menu.</p>
+        <p><b>Strona + Fundament SEO (2999 zł):</b> 2 filmy wygenerowane pod nowe menu.</p>
+        <p class="fine">Przykład już macie — <code>buratta.mp4</code> powyżej, w sekcji "Próbka".</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Czego potrzebujemy</h2></div>
+      <p class="sec-sub">Żeby domknąć stronę, potrzebujemy od Was kilku rzeczy — część jest konieczna, część tylko poprawi efekt końcowy.</p>
+
+      <div class="needs-group must">
+        <h3><span class="dot"></span>Must have — bez tego się nie obejdzie</h3>
+        <ul class="needs-list">
+          <li>Kilka zdjęć wnętrza restauracji bez osób</li>
+          <li>Zdjęcia potraw z nowego menu</li>
+          <li>Oferta, jaką chcielibyście zawrzeć na stronie z eventami</li>
+        </ul>
+      </div>
+
+      <div class="needs-group opt">
+        <h3><span class="dot"></span>Dodatkowo — opcjonalne, ale pomogą</h3>
+        <ul class="needs-list">
+          <li>Harmonogram lunchów, jeśli będzie stały</li>
+          <li>Wasze zdjęcie z Tomkiem — lepszy social proof</li>
+          <li>Wybór zdjęć do sekcji „Słodkie Momenty" (albo wybierzemy za Was)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">05</span><h2>Opcje abonamentowe</h2></div>
+      <p class="sec-sub">Miesięczne prowadzenie strony i social media po jej uruchomieniu.</p>
+
+      <div class="table-wrap">
+        <table class="sub-table">
+          <thead>
+            <tr>
+              <th>Funkcja</th>
+              <th>300 zł/mc</th>
+              <th>600 zł/mc</th>
+              <th>999 zł/mc</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Formularz na imprezy okolicznościowe</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>System rezerwacji</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Darmowe SMS</td>
+              <td class="val">do 100/mc</td>
+              <td class="val">do 100/mc</td>
+              <td class="val">do 200/mc</td>
+            </tr>
+            <tr>
+              <td>Rolki AI</td>
+              <td class="val">2/mc</td>
+              <td class="val">4/mc</td>
+              <td class="val">8/mc</td>
+            </tr>
+            <tr>
+              <td>Kalendarz eventów (Momenty na Żywo) + formularz</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Codzienna rolka Canva „wojny lunchowe" 😃</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Rozbudowa bloga</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Autopublikacja treści na social mediach</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Odpisywanie na opiniach w wizytówce Google</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="yes">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
   </div>
 
   <footer>Podgląd roboczy — terazstrona.pl · Momenty Bar &amp; Restaurant</footer>

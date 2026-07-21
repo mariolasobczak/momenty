@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Momenty · Editorial</title>
+<!-- Kierunek 02 — Editorial / storytelling. Inspiracja Mobbin: SSENSE (wielki serif), sweetgreen (menu z zakładkami), Mosuke (rozdziały). Treść i zdjęcia: realne z homepage v1 Momentów. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#f6f2ea;--paper2:#efe9dd;--ink:#1b1815;--muted:#6e665b;--wine:#7a2d24;--wine-soft:#a2483c}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 6vw}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .lbl{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--wine);font-weight:500}
+
+  nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1rem 6vw;background:rgba(246,242,234,.88);backdrop-filter:blur(8px);border-bottom:1px solid rgba(27,24,21,.08)}
+  nav .logo{display:flex;align-items:center;gap:.6rem;font-family:'Fraunces',serif;font-style:italic;font-size:1.6rem}
+  nav .logo img{height:34px;width:auto}
+  nav ul{display:flex;gap:1.8rem;list-style:none;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase}
+  nav ul a{opacity:.75;transition:.2s}nav ul a:hover{opacity:1;color:var(--wine)}
+  nav .book{border:1px solid var(--ink);padding:.55rem 1.1rem;border-radius:40px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+  nav .book:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:920px){nav ul{display:none}nav .book{display:none}}
+
+  nav li.has-drop{position:relative}
+  nav .drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:.9rem;display:none;min-width:210px}
+  nav li.has-drop:hover .drop{display:block}
+  nav .drop ul{flex-direction:column;gap:0;background:var(--paper);border:1px solid rgba(27,24,21,.14);border-radius:6px;padding:.5rem;box-shadow:0 12px 30px rgba(0,0,0,.1)}
+  nav .drop li a{display:block;padding:.65rem .9rem;white-space:nowrap;border-radius:4px;opacity:.85}
+  nav .drop li a:hover{background:rgba(27,24,21,.05);opacity:1}
+
+  .mobile-links .sub-label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1.2rem;padding:.4rem 0;font-family:'Inter',sans-serif;font-style:normal}
+  .mobile-links .sub-link{font-size:1.3rem !important;padding:.4rem 0 !important;border-bottom:0 !important;opacity:.85}
+
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:0;cursor:pointer;padding:0}
+  .hamburger span{width:24px;height:2px;background:var(--ink)}
+  @media(max-width:920px){.hamburger{display:flex}}
+
+  .mobile-call-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;padding:.7rem .8rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(246,242,234,.97);border-top:1px solid rgba(27,24,21,.14);backdrop-filter:blur(6px)}
+  .mobile-call-bar a{display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--wine);color:var(--paper);padding:.85rem;border-radius:100px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+  @media(max-width:920px){.mobile-call-bar{display:block}body{padding-bottom:64px}}
+
+  .mobile-menu{position:fixed;inset:0;z-index:200;background:var(--paper);display:flex;flex-direction:column;justify-content:space-between;padding:1.6rem 6vw 2.4rem;transform:translateX(100%);transition:transform .45s cubic-bezier(.16,1,.3,1);visibility:hidden}
+  .mobile-menu.open{transform:translateX(0);visibility:visible}
+  .mobile-menu-top{display:flex;justify-content:flex-end}
+  .mobile-menu-close{background:none;border:1px solid rgba(27,24,21,.2);color:var(--ink);width:44px;height:44px;border-radius:50%;font-size:1.1rem;cursor:pointer}
+  .mobile-links{display:flex;flex-direction:column;margin-top:1rem}
+  .mobile-links a{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(2rem,9vw,2.6rem);font-weight:300;color:var(--ink);padding:.55rem 0;border-bottom:1px solid rgba(27,24,21,.14)}
+  .mobile-links a:hover,.mobile-links a:active{color:var(--wine)}
+  .mobile-menu-bottom{display:flex;flex-direction:column;gap:1.4rem}
+  .mobile-social{display:flex;gap:1.6rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .mobile-call{text-align:center;display:block}
+
+  .hero{padding:5rem 0 3rem;text-align:center}
+  .hero .lbl{margin-bottom:1.6rem}
+  .hero-logo{height:44px;width:auto;margin:0 auto 1.4rem}
+  .hero .pill{display:inline-flex;gap:.5rem;margin-bottom:1.8rem;padding:.45rem 1rem;border:1px solid rgba(27,24,21,.18);border-radius:40px;font-size:.8rem;color:var(--muted)}
+  .hero h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.8rem,8vw,6.2rem);line-height:.98;letter-spacing:-.015em;max-width:15ch;margin:0 auto}
+  .hero h1 em{font-style:italic}
+  .hero .sub{max-width:54ch;margin:1.8rem auto 0;color:var(--muted);font-size:1.12rem}
+  .hero .cta{margin-top:2.2rem;display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+  .btn{background:var(--wine);color:var(--paper);padding:.85rem 1.9rem;border-radius:40px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+  .btn:hover{background:var(--wine-soft)}
+  .btn-ghost{border:1px solid var(--ink);padding:.85rem 1.9rem;border-radius:40px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .hero-carousel{margin-top:4rem;height:60vh;min-height:400px;border-radius:4px;position:relative;overflow:hidden;background:#e7e0d2}
+  .hero-carousel .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:kenburnsLight 25s infinite}
+  .hero-carousel .slide:nth-child(1){animation-delay:0s}
+  .hero-carousel .slide:nth-child(2){animation-delay:5s}
+  .hero-carousel .slide:nth-child(3){animation-delay:10s}
+  .hero-carousel .slide:nth-child(4){animation-delay:15s}
+  .hero-carousel .slide:nth-child(5){animation-delay:20s}
+  @keyframes kenburnsLight{
+    0%{opacity:0;transform:scale(1)}
+    4%{opacity:1}
+    18%{opacity:1;transform:scale(1.07)}
+    22%{opacity:0;transform:scale(1.07)}
+    100%{opacity:0}
+  }
+  .fade-item{opacity:0;animation:heroFade .9s ease forwards}
+  .hero-logo.fade-item{animation-delay:.1s}
+  .hero .lbl.fade-item{animation-delay:.3s}
+  .hero .pill.fade-item{animation-delay:.5s}
+  .hero h1.fade-item{animation-delay:.7s}
+  .hero .sub.fade-item{animation-delay:1.05s}
+  .hero .cta.fade-item{animation-delay:1.35s}
+  @keyframes heroFade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .fade-in{opacity:0;transition:opacity .8s ease}
+  .fade-in.in{opacity:1}
+  .cards .fc:nth-child(2),.drink-grid img:nth-child(2),.ev-cards .ev:nth-child(2),.cards2 .rev:nth-child(2){transition-delay:.08s}
+  .cards .fc:nth-child(3),.drink-grid img:nth-child(3),.ev-cards .ev:nth-child(3),.cards2 .rev:nth-child(3){transition-delay:.16s}
+  .cards .fc:nth-child(4),.drink-grid img:nth-child(4){transition-delay:.24s}
+  .cards .fc:nth-child(5),.drink-grid img:nth-child(5){transition-delay:.32s}
+  .cards .fc:nth-child(6),.drink-grid img:nth-child(6){transition-delay:.4s}
+  .gallery img:nth-child(odd){transition-delay:.06s}
+  .gallery img:nth-child(even){transition-delay:.16s}
+  @media(prefers-reduced-motion:reduce){.reveal,.fade-in{opacity:1;transform:none;transition:none}.fade-item{animation:none;opacity:1}.hero-carousel .slide{animation:none}}
+
+  .gallery-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:0}
+  .ig-follow{display:flex;align-items:center;gap:1rem}
+  .ig-handle{font-family:'Fraunces',serif;font-style:italic;color:var(--wine)}
+  .ig-btn{border:1px solid var(--ink);border-radius:100px;padding:.5rem 1.2rem;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);transition:.2s}
+  .ig-btn:hover{background:var(--ink);color:var(--paper)}
+
+  .photo-group{position:relative;padding-bottom:2rem;padding-right:2rem}
+  .photo-group > img{width:100%;height:100%;object-fit:cover;border-radius:4px;display:block}
+  .photo-group .photo-second{position:absolute;bottom:0;right:0;width:44%;border-radius:6px;overflow:hidden;border:4px solid var(--paper);box-shadow:0 20px 40px rgba(0,0,0,.18)}
+  .photo-group .photo-second img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;max-height:none}
+  @media(max-width:860px){.photo-group{padding-bottom:1.6rem;padding-right:1.6rem}}
+
+  .trust{border-top:1px solid rgba(27,24,21,.12);border-bottom:1px solid rgba(27,24,21,.12)}
+  .trust .row{display:grid;grid-template-columns:repeat(4,1fr);padding:1.6rem 0}
+  .trust .t{text-align:center;padding:.4rem 1rem;border-right:1px solid rgba(27,24,21,.1)}
+  .trust .t:last-child{border:0}
+  .trust .v{font-family:'Fraunces',serif;font-size:1.35rem;color:var(--wine)}
+  .trust .l{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+  @media(max-width:720px){.trust .row{grid-template-columns:1fr 1fr}.trust .t:nth-child(2){border:0}}
+
+  section{padding:6.5rem 0}
+  .chapter-head{display:flex;align-items:baseline;gap:1.4rem;border-top:1px solid rgba(27,24,21,.14);padding-top:1.6rem;margin-bottom:2.5rem}
+  .chapter-head .no{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--wine)}
+  .chapter-head h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;flex:1}
+  .chapter-head h2 em{font-style:italic}
+  .intro-lead{color:#4a443b;font-size:1.1rem;max-width:60ch;margin-bottom:2.5rem}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1rem}
+  .fc{background:var(--paper);border-radius:6px;overflow:hidden}
+  .fc img{aspect-ratio:1/1;width:100%;object-fit:cover}
+  .fc .b{padding:1.4rem}
+  .fc h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem}
+  .fc .price{color:var(--wine);font-weight:700;font-size:.95rem;float:right}
+  .fc p{color:var(--muted);font-size:.86rem;margin-top:.5rem;line-height:1.5}
+  @media(max-width:860px){.cards{grid-template-columns:1fr}}
+
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1rem}
+  .blog-card{background:var(--paper2);border-radius:6px;overflow:hidden;border:1px solid rgba(27,24,21,.1)}
+  .blog-card img{width:100%;aspect-ratio:16/10;object-fit:cover}
+  .blog-card .b{padding:1.4rem}
+  .blog-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.1rem;margin-bottom:.6rem;line-height:1.3}
+  .blog-card p{color:var(--muted);font-size:.85rem;line-height:1.55}
+  .blog-card .more{margin-top:1rem;display:inline-block;color:var(--wine);font-size:.8rem;letter-spacing:.06em}
+  @media(max-width:860px){.blog-grid{grid-template-columns:1fr}}
+
+  .lunch-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3.5rem;align-items:center}
+  .lunch-grid .mosaic{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  .lunch-grid .mosaic img{width:100%;height:100%;object-fit:cover;border-radius:4px}
+  .lunch-grid .mosaic .big{grid-column:span 2;aspect-ratio:16/9}
+  .lunch-grid .mosaic .sq{aspect-ratio:1/1}
+  @media(max-width:860px){.lunch-grid{grid-template-columns:1fr;gap:2rem}}
+
+  .menu{background:var(--paper2)}
+  .feature-dish{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(27,24,21,.14)}
+  .feature-dish-img{border-radius:6px;overflow:hidden;aspect-ratio:4/3}
+  .feature-dish-img img{width:100%;height:100%;object-fit:cover}
+  .feature-dish-text h3{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.8rem,4vw,2.2rem);margin:.7rem 0 1rem}
+  .feature-dish-text h3 em{font-style:italic;color:var(--wine)}
+  .feature-dish-text p{color:#4a443b;font-size:1rem;line-height:1.65}
+  @media(max-width:860px){.feature-dish{grid-template-columns:1fr;gap:1.6rem}}
+  /* Menu / cocktail column layout: zdjęcia po lewej i prawej, lista na środku (jak na terazstrona v1) */
+  .menu-columns{display:grid;grid-template-columns:170px 1fr 170px;gap:2.4rem;margin-top:1rem;align-items:start}
+  .mcol-photos{display:flex;flex-direction:column;gap:1rem}
+  .mcol-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px}
+  .mcol-list{max-width:640px;margin:0 auto;width:100%}
+  .mcat{margin-bottom:2.6rem}
+  .mcat:last-child{margin-bottom:0}
+  .mcat h4,.mcat summary{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:1.2rem;color:var(--wine);text-align:center;margin-bottom:1.2rem}
+  .mcat summary{cursor:pointer;list-style:none;position:relative;padding:.2rem 1.6rem}
+  .mcat summary::-webkit-details-marker{display:none}
+  .mcat summary::after{content:'+';position:absolute;right:0;top:0;font-size:1.3rem}
+  .mcat[open] summary::after{content:'–'}
+  .mcat .note{font-size:.78rem;font-style:italic;color:var(--muted);text-align:center;margin:-.6rem 0 1.2rem}
+  .mitem{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid rgba(27,24,21,.12)}
+  .mitem:last-child{border-bottom:0}
+  .mitem .n b{font-weight:600;font-size:.96rem}
+  .mitem .n small{display:block;color:var(--muted);font-size:.8rem;margin-top:.25rem;line-height:1.5}
+  .mitem .p{color:var(--wine);font-weight:700;white-space:nowrap;font-size:.92rem}
+  @media(max-width:1000px){.menu-columns{grid-template-columns:1fr}.mcol-photos{display:none}}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .split img{border-radius:4px;width:100%;height:100%;max-height:520px;object-fit:cover}
+  .split p{color:#4a443b;font-size:1.05rem;margin-bottom:1.1rem}
+  .split .big{font-family:'Fraunces',serif;font-weight:300;font-size:1.6rem;line-height:1.35;color:var(--ink);margin-bottom:1.4rem}
+  .split .stats{display:flex;gap:2.4rem;margin-top:1.6rem}
+  .split .stats .v{font-family:'Fraunces',serif;font-size:1.8rem;color:var(--wine)}
+  .split .stats .l{font-size:.76rem;color:var(--muted)}
+  @media(max-width:860px){.split{grid-template-columns:1fr;gap:2rem}}
+
+  .band{background:var(--ink);color:var(--paper);text-align:center}
+  .band blockquote{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.25;max-width:24ch;margin:0 auto}
+
+  .reviews .cards2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.5rem}
+  .rev{border:1px solid rgba(27,24,21,.14);border-radius:6px;padding:1.6rem;background:var(--paper2)}
+  .rev .stars{color:var(--wine);letter-spacing:2px;margin-bottom:.7rem}
+  .rev p{font-size:.9rem;line-height:1.6;color:#3f3931}
+  .rev .who{margin-top:.9rem;font-size:.78rem;color:var(--muted)}
+  @media(max-width:860px){.reviews .cards2{grid-template-columns:1fr}}
+
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:.6rem;margin-top:2.5rem}
+  .gallery img{width:100%;height:100%;object-fit:cover;border-radius:3px}
+  .gallery .tall{grid-row:span 2}.gallery .wide{grid-column:span 2}
+  @media(max-width:720px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}}
+
+  .ev-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1rem}
+  @media(max-width:1100px){.ev-cards{grid-template-columns:repeat(2,1fr)}}
+  .ev{border-radius:6px;overflow:hidden;background:var(--paper2)}
+  .ev img{aspect-ratio:16/10;width:100%;object-fit:cover}
+  .ev .b{padding:1.4rem}
+  .ev h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;margin-bottom:.5rem}
+  .ev p{color:var(--muted);font-size:.86rem;line-height:1.5}
+  @media(max-width:860px){.ev-cards{grid-template-columns:1fr}}
+
+  .contact{background:var(--paper2)}
+  .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:stretch}
+  .contact iframe{width:100%;height:100%;min-height:340px;border:0;border-radius:8px}
+  .contact h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,5vw,3rem);line-height:1.08;margin-bottom:1rem}
+  .contact h2 em{font-style:italic}
+  .details{margin-top:1.4rem;display:grid;gap:1rem}
+  .details .lbl2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--wine)}
+  .details .v{font-family:'Fraunces',serif;font-size:1.25rem;margin-top:.15rem}
+  .hours{border-top:1px solid rgba(27,24,21,.14);margin-top:1rem;padding-top:1rem}
+  .hours .h{display:flex;justify-content:space-between;padding:.6rem 0;font-size:.92rem}
+  .hours .h b{font-weight:600;color:var(--wine)}
+  @media(max-width:860px){.contact .grid{grid-template-columns:1fr;gap:2rem}}
+
+  footer.f{padding:4rem 0 3rem;text-align:center;border-top:1px solid rgba(27,24,21,.12)}
+  footer.f .logo{font-family:'Fraunces',serif;font-style:italic;font-size:2rem}
+  footer.f p{color:var(--muted);font-size:.9rem;max-width:44ch;margin:.8rem auto 0}
+  footer.f .soc{margin-top:1.2rem;display:flex;gap:1.6rem;justify-content:center;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  footer.f .cr{margin-top:1.4rem;font-size:.74rem;color:#a89e90}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#"><img src="images/logo-transparent.webp" alt="Momenty"> momenty</a>
+  <ul>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#drinki">Cocktail Bar</a></li>
+    <li><a href="#lunch">Lunch</a></li>
+    <li class="has-drop"><a href="#eventy">Eventy</a>
+      <div class="drop"><ul>
+        <li><a href="#ev-na-zywo">Momenty na żywo</a></li>
+        <li><a href="#ev-firmowe">Eventy Firmowe</a></li>
+        <li><a href="#ev-wesela">Przyjęcia Weselne</a></li>
+        <li><a href="#ev-urodziny">Urodziny</a></li>
+      </ul></div>
+    </li>
+    <li><a href="#ludzie">O nas</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a class="book" href="tel:694947119">694 947 119</a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Zamknij menu">✕</button>
+  </div>
+  <nav class="mobile-links">
+    <a href="#menu">Menu</a>
+    <a href="#drinki">Cocktail Bar</a>
+    <a href="#lunch">Lunch</a>
+    <a href="#eventy">Eventy</a>
+    <span class="sub-label">— Eventy</span>
+    <a class="sub-link" href="#ev-na-zywo">Momenty na żywo</a>
+    <a class="sub-link" href="#ev-firmowe">Eventy Firmowe</a>
+    <a class="sub-link" href="#ev-wesela">Przyjęcia Weselne</a>
+    <a class="sub-link" href="#ev-urodziny">Urodziny</a>
+    <a href="#ludzie">O nas</a>
+    <a href="#blog">Blog</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <div class="mobile-menu-bottom">
+    <div class="mobile-social">
+      <a href="https://www.facebook.com/p/Momenty-Bar-Restaurant-61562002215299" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/momenty_restauracja" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@momenty.restauracja" target="_blank" rel="noopener">TikTok</a>
+    </div>
+    <a class="btn mobile-call" href="tel:694947119">Zadzwoń: 694 947 119</a>
+  </div>
+</div>
+
+<div class="mobile-call-bar">
+  <a href="tel:694947119">📞 Zadzwoń: 694 947 119</a>
+</div>
+
+<header class="hero wrap">
+  <img class="hero-logo fade-item" src="images/logo-transparent.webp" alt="Momenty Bar & Restaurant Łowicz">
+  <p class="lbl fade-item">Restauracja · Cocktail Bar · Łowicz</p>
+  <div class="pill fade-item">🕐 Do ostatniego gościa w weekendy · Pon–Pt 12–22</div>
+  <h1 class="fade-item">Momenty, <em>których nie zapomnisz.</em></h1>
+  <p class="sub fade-item">Autorska kuchnia włoska, ręcznie robiona pasta, koktajle do ostatniego gościa. Zduńska 52, Łowicz.</p>
+  <div class="cta fade-item">
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=MOMENTY%20-%20Restauracja%20%26%20Bar&query_place_id=ChIJC5X6BDLnG0cRoZp0vuXYIxE" target="_blank" rel="noopener">Wpadnij na drinka</a>
+    <a class="btn-ghost" href="tel:694947119">Zadzwoń: 694 947 119</a>
+  </div>
+</header>
+<div class="hero-carousel wrap" style="max-width:1180px">
+  <div class="slide" style="background-image:url('images/gallery-08.webp')"></div>
+  <div class="slide" style="background-image:url('images/menu-ravioli-spinaci.webp')"></div>
+  <div class="slide" style="background-image:url('images/menu-tagliatelle-pepe.webp')"></div>
+  <div class="slide" style="background-image:url('images/drink-01.webp')"></div>
+  <div class="slide" style="background-image:url('images/team-momenty.webp')"></div>
+</div>
+
+<section class="trust reveal" style="padding:0">
+  <div class="wrap row">
+    <div class="t"><div class="v">4.3/5</div><div class="l">311 opinii Google</div></div>
+    <div class="t"><div class="v">80%</div><div class="l">poleca na Facebooku</div></div>
+    <div class="t"><div class="v">do ostatniego gościa</div><div class="l">w weekendy</div></div>
+    <div class="t"><div class="v">własnoręcznie</div><div class="l">robiona pasta, codziennie</div></div>
+  </div>
+</section>
+
+<section class="wrap reveal">
+  <p class="lbl" style="margin-bottom:1.4rem">Nasza filozofia</p>
+  <p style="font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.35;max-width:24ch">Momenty powstały z miłości do jedzenia i ludzi. <em style="color:var(--wine)">Nie chcemy kompromisów.</em></p>
+  <p class="intro-lead" style="margin-top:1.5rem">Z potrzeby stworzenia miejsca, w którym smak idzie w parze z emocjami, a każdy szczegół ma znaczenie.</p>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="chapter-head reveal"><span class="no">Rozdział 01</span><h2>Jedzenie robione <em>rękami, nie skrótami</em></h2></div>
+    <p class="intro-lead reveal">Ręcznie lepione ravioli, burgery z własnoręcznie mielonego mięsa, pasta wyrabiana rano. Bez kompromisów. Oto nasze flagowe dania.</p>
+
+    <div class="feature-dish reveal">
+      <div class="feature-dish-img"><img src="images/menu-ravioli-spinaci.webp" alt="Ravioli ze szpinakiem i ricottą"></div>
+      <div class="feature-dish-text">
+        <p class="lbl">Poleca szef</p>
+        <h3>Ravioli <em>własnej roboty</em></h3>
+        <p>Lepione ręcznie, nadziewane szpinakiem i ricottą, podawane w maśle szałwiowym. Danie, które najlepiej pokazuje, czym są dla nas Momenty: cierpliwość i smak bez skrótów.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="fc fade-in"><img src="images/menu-smash-burger.webp" alt="Smash Burger"><div class="b"><h3>Smash Burger</h3><span class="price">44 zł</span><p>Maślana bułka, dwa kotlety po 90 g świeżo mielonej wołowiny, cheddar, karmelizowana cebulka.</p></div></div>
+      <div class="fc fade-in"><img src="images/menu-tatar.webp" alt="Tatar Momenty"><div class="b"><h3>Tatar Momenty</h3><span class="price">34 zł</span><p>Na grillowanej chałce z kurkami, majonezem truflowym, Grana Padano i prażonymi orzeszkami.</p></div></div>
+      <div class="fc fade-in"><img src="images/menu-pulled-king.webp" alt="Pulled King"><div class="b"><h3>Pulled King</h3><span class="price">52 zł</span><p>Chałka własnego wypieku, szarpana wieprzowina w sosie BBQ, cheddar, coleslaw i boczek.</p></div></div>
+      <div class="fc fade-in"><img src="images/menu-burrata.webp" alt="Burrata"><div class="b"><h3>Burrata</h3><span class="price">34 zł</span><p>Kremowy bawoli ser z podsmażanymi włoskimi pomidorkami, parmezanem i balsamico.</p></div></div>
+      <div class="fc fade-in"><img src="images/menu-tagliatelle-pepe.webp" alt="Tagliatelle Pepe di Pesto"><div class="b"><h3>Tagliatelle Pepe di Pesto</h3><span class="price">42 zł</span><p>Ręcznie wyrabiane, Pecorino Romano, guanciale, pesto bazyliowe.</p></div></div>
+      <div class="fc fade-in"><img src="images/menu-krewetki.webp" alt="Krewetki po włosku"><div class="b"><h3>Krewetki po włosku</h3><span class="price">35 zł</span><p>Podsmażane na maśle z czosnkiem, podawane z grillowanym chlebem (8 szt.).</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="pelne-menu" style="padding-top:0">
+  <div class="wrap" style="padding:0">
+    <div class="chapter-head reveal" style="border-top:0"><span class="no">Cała karta</span><h2>Pełne <em>Menu</em></h2></div>
+    <p class="intro-lead reveal">Wszystko, co serwujemy — od przystawek po desery, z cenami.</p>
+    <div class="menu-columns">
+      <div class="mcol-photos" aria-hidden="true">
+        <img src="images/menu-tatar.webp" alt="">
+        <img src="images/menu-burrata.webp" alt="">
+        <img src="images/menu-krewetki.webp" alt="">
+        <img src="images/menu-pomodoro.webp" alt="">
+      </div>
+      <div class="mcol-list reveal">
+        <details class="mcat" open>
+        <summary>Przystawki</summary>
+          <div class="mitem"><div class="n"><b>Burrata</b><small>Kremowy bawoli ser, podsmażane włoskie pomidorki, parmezan, grillowany chleb, ocet balsamiczny</small></div><div class="p">34 zł</div></div>
+          <div class="mitem"><div class="n"><b>Bruschetta</b><small>Z włoskimi pomidorami na grillowanym chlebie z parmezanem</small></div><div class="p">20 zł</div></div>
+          <div class="mitem"><div class="n"><b>Tatar Momenty</b><small>Grillowana chałka, kurki, cebula, ogórek kiszony, majonez truflowy, musztarda francuska, Grana Padano</small></div><div class="p">34 zł</div></div>
+          <div class="mitem"><div class="n"><b>Krewetki po włosku</b><small>Podsmażane na maśle z czosnkiem, grillowany chleb (8 szt.)</small></div><div class="p">35 zł</div></div>
+          <div class="mitem"><div class="n"><b>Mule w winie</b><small>500 g muli, włoskie pomidory, czosnek, białe wino, natka pietruszki</small></div><div class="p">55 zł</div></div>
+          <div class="mitem"><div class="n"><b>Serowe Szaleństwo</b><small>5 rodzajów gorących serów w panierce (10 szt.)</small></div><div class="p">30 zł</div></div>
+          <div class="mitem"><div class="n"><b>Onion Pop Flower</b><small>Krążki cebulowe z 3 sosami: Aioli, Momenty, Bacon Mayo</small></div><div class="p">22 zł</div></div>
+          <div class="mitem"><div class="n"><b>Frytkomania</b><small>Frytki oblane serem z boczkiem lub z kozim serem i guanciale</small></div><div class="p">25 zł</div></div>
+          <div class="mitem"><div class="n"><b>Frytki z batatów lub klasyczne</b><small>Ręcznie cięte, z sosem Aioli</small></div><div class="p">17 zł</div></div>
+          <div class="mitem"><div class="n"><b>Zupy</b><small>Rosół + zupa dnia (zapytaj obsługi)</small></div><div class="p">18 zł</div></div>
+        </details>
+        <details class="mcat" open>
+        <summary>Sałatki</summary>
+          <div class="mitem"><div class="n"><b>Sałatka Witalna</b><small>Awokado, mango, grillowane halloumi, orzechy nerkowca, sos limonkowo-miodowy</small></div><div class="p">38 zł</div></div>
+          <div class="mitem"><div class="n"><b>Kolorowe Szaleństwo</b><small>Czerwone winogrona, ser pleśniowy, orzechy włoskie, sos balsamiczno-miodowy</small></div><div class="p">38 zł</div></div>
+          <div class="mitem"><div class="n"><b>Cezar z Pazurem</b><small>Sałata rzymska, boczek, grzanki, sos śmietanowy z chipotle, Grana Padano</small></div><div class="p">34 zł</div></div>
+          <div class="mitem"><div class="n"><b>Fit Bomba</b><small>Rukola, suszone pomidory, kulki mozzarelli, Grana Padano, miód-musztarda</small></div><div class="p">36 zł</div></div>
+          <div class="mitem"><div class="n"><b>Bowl z Halloumi</b><small>Awokado, grillowane bataty, komosa ryżowa, ser halloumi, papryka</small></div><div class="p">48 zł</div></div>
+          <div class="mitem"><div class="n"><b>Bowl z Łososiem</b><small>Łosoś, soja blanszowana, awokado, rzodkiewki, czerwona kapusta, sezam</small></div><div class="p">54 zł</div></div>
+          <div class="mitem"><div class="n"><b>Momenty na Talerzu</b><small>Burrata, pieczona dynia, grillowana brzoskwinia, sos z sycylijskiej pomarańczy</small></div><div class="p">40 zł</div></div>
+        </details>
+        <details class="mcat">
+        <summary>Makarony</summary>
+          <div class="note">Wszystkie makarony wyrabiane ręcznie w naszej kuchni</div>
+          <div class="mitem"><div class="n"><b>Tagliatelle Pepe di Pesto</b><small>Włoska pomarańcza, Pecorino Romano, guanciale, pesto bazyliowe</small></div><div class="p">42 zł</div></div>
+          <div class="mitem"><div class="n"><b>Spaghetti Burrata</b><small>Sos z pieczonych pomidorów San Marzano, bazylia, Pecorino Romano</small></div><div class="p">48 zł</div></div>
+          <div class="mitem"><div class="n"><b>Gnocchi al Tartufo</b><small>Palone masło, czarna trufla, suszone pomidory, Pecorino Romano</small></div><div class="p">44 zł</div></div>
+          <div class="mitem"><div class="n"><b>Ravioli Nero di Mare</b><small>Barwione atramentem ośmiornicy, krewetki, sos maślano-cytrynowy (11 szt.)</small></div><div class="p">42 zł</div></div>
+          <div class="mitem"><div class="n"><b>Ravioli Ricotta e Spinaci</b><small>Szpinak i ricotta, sos z gruszki i gorgonzoli (14 szt.)</small></div><div class="p">42 zł</div></div>
+          <div class="mitem"><div class="n"><b>Penne ai Funghi e Pollo</b><small>Kurczak w sosie grzybowym na bazie borowików i podgrzybków</small></div><div class="p">44 zł</div></div>
+          <div class="mitem"><div class="n"><b>Fettuccine Alfredo e Limone</b><small>Granat, masło, śmietana, Pecorino Romano, grillowany kurczak</small></div><div class="p">40 zł</div></div>
+          <div class="mitem"><div class="n"><b>Rigatoni al Ragù di Maiale</b><small>Wieprzowe ragù, Pinot Noir, pomidory San Marzano, zioła włoskie</small></div><div class="p">45 zł</div></div>
+          <div class="mitem"><div class="n"><b>Tagliatelle Nero del Sol</b><small>Barwione atramentem kałamarnicy, owoce morza, kremowy sos</small></div><div class="p">52 zł</div></div>
+        </details>
+        <details class="mcat">
+        <summary>Burgery</summary>
+          <div class="note">Wszystkie serwowane z frytkami i ketchupem</div>
+          <div class="mitem"><div class="n"><b>Smash Burger</b><small>Dwa kotlety 90 g, cheddar, karmelizowana cebulka, ketchup, musztarda</small></div><div class="p">44 zł</div></div>
+          <div class="mitem"><div class="n"><b>Momenty z Drwalem</b><small>180 g wołowiny, autorski kotlet serowy, boczek, sos Momenty</small></div><div class="p">52 zł</div></div>
+          <div class="mitem"><div class="n"><b>Cheesy Boy</b><small>Cheddar, boczek, sos Momenty i musztarda Dijon, w sosie serowym</small></div><div class="p">56 zł</div></div>
+          <div class="mitem"><div class="n"><b>Grande Pollo</b><small>Panierowana pierś z kurczaka, burrata, pieczony pomidor, boczek</small></div><div class="p">50 zł</div></div>
+          <div class="mitem"><div class="n"><b>Milano</b><small>Mozzarella fior di latte, prosciutto crudo, bazylia, pesto alla genovese</small></div><div class="p">50 zł</div></div>
+          <div class="mitem"><div class="n"><b>Pulled King</b><small>Chałka własnego wypieku, szarpana wieprzowina BBQ, coleslaw, boczek</small></div><div class="p">52 zł</div></div>
+          <div class="mitem"><div class="n"><b>Zakopany Burger</b><small>Oscypek, konfitura z żurawiny, czerwona cebula, sos majonezowo-musztardowy</small></div><div class="p">54 zł</div></div>
+          <div class="mitem"><div class="n"><b>Wagyu Burger</b><small>180 g Kobe Wagyu A5, majonez truflowy, grillowany boczniak, gruyère</small></div><div class="p">89 zł</div></div>
+        </details>
+        <details class="mcat">
+        <summary>Dania Główne</summary>
+          <div class="mitem"><div class="n"><b>Pierś z Kurczaka</b><small>Podgrzybki, boczniaki, gratin ziemniaczany, mus z buraka</small></div><div class="p">48 zł</div></div>
+          <div class="mitem"><div class="n"><b>Pierś z Kaczki</b><small>Puree z dyni, chilli, imbir, mus śliwkowy, pijana gruszka</small></div><div class="p">58 zł</div></div>
+          <div class="mitem"><div class="n"><b>Golonka</b><small>Pieczona w ciemnym piwie, opiekane ziemniaki, piklowana kapusta</small></div><div class="p">56 zł</div></div>
+          <div class="mitem"><div class="n"><b>Polędwiczki Wieprzowe</b><small>Truflowe puree, grillowany brokuł, sos demi-glace z porto</small></div><div class="p">58 zł</div></div>
+          <div class="mitem"><div class="n"><b>Stek z Łososia</b><small>Limonkowe puree, oliwa szczypiorowa, grillowany batat</small></div><div class="p">60 zł</div></div>
+          <div class="mitem"><div class="n"><b>Żeberka</b><small>Autorski sos na bazie Coca-Coli i Jacka Danielsa, coleslaw</small></div><div class="p">64 zł</div></div>
+          <div class="mitem"><div class="n"><b>Pierogi z Jeleniną</b><small>Ręcznie lepione, sos leśny na bazie borowików i podgrzybków</small></div><div class="p">56 zł</div></div>
+        </details>
+        <details class="mcat">
+        <summary>Premium</summary>
+          <div class="note">Najlepsza jakość, bez kompromisów</div>
+          <div class="mitem"><div class="n"><b>Stek z Rostbefu</b><small>Kolba kukurydzy, masło czosnkowe, frytki stekowe</small></div><div class="p">99 zł</div></div>
+          <div class="mitem"><div class="n"><b>Sezonowany Stek z Antrykotu</b><small>Frytki ręcznie cięte, sos Chimichurri, oliwa truflowa</small></div><div class="p">110 zł</div></div>
+          <div class="mitem"><div class="n"><b>Stek z Polędwicy</b><small>Kamień wulkaniczny z Etny, masło z konfitowanym czosnkiem</small></div><div class="p">120 zł</div></div>
+          <div class="mitem"><div class="n"><b>Złoty Stek z Sezonowanej Wołowiny</b><small>Black Angus w 24K złocie, frytki Urban Style</small></div><div class="p">199 zł</div></div>
+        </details>
+        <details class="mcat">
+        <summary>Plattery</summary>
+          <div class="note">Cena za osobę · do dzielenia się</div>
+          <div class="mitem"><div class="n"><b>Francuski</b><small>3 sery, szynka Bayonne, konfitura z cebuli, figi, orzechy</small></div><div class="p">25 zł/os</div></div>
+          <div class="mitem"><div class="n"><b>Amerykański</b><small>Skrzydełka, tacosy z wieprzowiną, paluszki serowe, nachosy</small></div><div class="p">25 zł/os</div></div>
+          <div class="mitem"><div class="n"><b>Łowicki</b><small>Kiełbasa, kaszanka, śliwki w boczku, domowy smalec, pasztet</small></div><div class="p">25 zł/os</div></div>
+          <div class="mitem"><div class="n"><b>Party Mix</b><small>Skrzydełka BBQ, stripsy, nachosy, tatar na grzankach</small></div><div class="p">35 zł/os</div></div>
+          <div class="mitem"><div class="n"><b>Best of Momenty</b><small>3 rodzaje mięs, tacosy, frytki, coleslaw — na kamieniu lawowym</small></div><div class="p">269 zł</div></div>
+        </details>
+        <details class="mcat">
+        <summary>Kids</summary>
+          <div class="mitem"><div class="n"><b>Pomodoro</b><small>Spaghetti z sosem pomidorowym i parmezanem</small></div><div class="p">20 zł</div></div>
+          <div class="mitem"><div class="n"><b>Fileciki z Kurczaka</b><small>W panierce, z frytkami i surówką</small></div><div class="p">25 zł</div></div>
+          <div class="mitem"><div class="n"><b>Mini Spaghetti Bolognese</b><small>Sos z wieprzowiny i pomidorów</small></div><div class="p">26 zł</div></div>
+          <div class="mitem"><div class="n"><b>Mini Burger z Frytkami</b><small>Kotlet wołowy lub drobiowy, ser, ogórek</small></div><div class="p">30 zł</div></div>
+        </details>
+        <details class="mcat">
+        <summary>Desery</summary>
+          <div class="mitem"><div class="n"><b>Fondant Czekoladowy</b><small>Płynna czekolada, lody, sezonowe owoce</small></div><div class="p">26 zł</div></div>
+          <div class="mitem"><div class="n"><b>Selekcja Dnia</b><small>Zapytaj obsługi</small></div><div class="p">22 zł</div></div>
+          <div class="mitem"><div class="n"><b>Naleśniki na Słodko</b><small>Nutella lub domowa konfitura, owoce</small></div><div class="p">24 zł</div></div>
+          <div class="mitem"><div class="n"><b>Szarlotka z Lodami</b><small>Domowa, z cynamonem</small></div><div class="p">20 zł</div></div>
+        </details>
+        <details class="mcat">
+        <summary>Kawa &amp; Napoje</summary>
+          <div class="mitem"><div class="n"><b>Kawy specialty (Raf Pistacjowy, Flat Macadamia, Matcha Latte…)</b></div><div class="p">16–22 zł</div></div>
+          <div class="mitem"><div class="n"><b>Espresso / Americano / Cappuccino / Latte / Flat White</b></div><div class="p">8–16 zł</div></div>
+          <div class="mitem"><div class="n"><b>Lemoniady i karafki</b></div><div class="p">17–26 zł</div></div>
+          <div class="mitem"><div class="n"><b>Herbaty liściaste</b></div><div class="p">18–20 zł</div></div>
+          <div class="mitem"><div class="n"><b>Grzaniec z Momentów / Herbata Zimowa z Prądem</b></div><div class="p">30 zł</div></div>
+          <div class="mitem"><div class="n"><b>Piwa (Żywiec, Corona, Desperados)</b></div><div class="p">16–17 zł</div></div>
+          <div class="mitem"><div class="n"><b>Napoje gazowane</b></div><div class="p">9 zł</div></div>
+        </details>
+      </div>
+      <div class="mcol-photos" aria-hidden="true">
+        <img src="images/menu-tagliatelle-pepe.webp" alt="">
+        <img src="images/menu-pulled-king.webp" alt="">
+        <img src="images/menu-smash-burger.webp" alt="">
+        <img src="images/menu-stek-lososia.webp" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="drinki">
+  <div class="chapter-head reveal"><span class="no">Rozdział 02</span><h2>Wieczór zaczyna się <em>przy barze</em></h2></div>
+  <p class="intro-lead reveal">Świeże owoce, zioła z ogródka i efektowny dym na finisz. W weekendy lejemy do ostatniego gościa. Ceny w przygotowaniu — poniżej karta smaków.</p>
+  <div class="menu-columns">
+    <div class="mcol-photos" aria-hidden="true">
+      <img src="images/drink-01.webp" alt="">
+      <img src="images/drink-mohito.webp" alt="">
+      <img src="images/drink-04.webp" alt="">
+    </div>
+    <div class="mcol-list reveal">
+      <details class="mcat" open>
+        <summary>Classic</summary>
+        <div class="mitem"><div class="n"><b>Old Fashioned</b><small>Whisky, cukier, angostura, skórka pomarańczy</small></div></div>
+        <div class="mitem"><div class="n"><b>Martini</b><small>Gin, wermut</small></div></div>
+        <div class="mitem"><div class="n"><b>Margarita</b><small>Tequila, likier pomarańczowy, sok z limonki</small></div></div>
+        <div class="mitem"><div class="n"><b>Whisky Sour</b><small>Whisky, sok z cytryny, syrop cukrowy, białko</small></div></div>
+        <div class="mitem"><div class="n"><b>Manhattan</b><small>Whisky, wermut, angostura</small></div></div>
+        <div class="mitem"><div class="n"><b>Cosmopolitan</b><small>Wódka cytrynowa, likier pomarańczowy, żurawina, limonka</small></div></div>
+        <div class="mitem"><div class="n"><b>Moscow Mule</b><small>Wódka, świeży sok z limonki, piwo imbirowe</small></div></div>
+      </details>
+      <details class="mcat" open>
+        <summary>Best of Momenty</summary>
+        <div class="mitem"><div class="n"><b>Lillet Hugo Spritz</b><small>Lillet Blanc, syrop z czarnego bzu, prosecco, mięta</small></div></div>
+        <div class="mitem"><div class="n"><b>Aperol Spritz</b><small>Aperol, prosecco, woda gazowana</small></div></div>
+        <div class="mitem"><div class="n"><b>Mojito</b><small>Rum, sok z limonki, świeża mięta, woda gazowana</small></div></div>
+        <div class="mitem"><div class="n"><b>Red Margarita Frozen</b><small>Tequila, likier Triple Sec, malinowe puree</small></div></div>
+        <div class="mitem"><div class="n"><b>Pornstar Martini</b><small>Wódka waniliowa, likier z marakui, prosecco</small></div></div>
+      </details>
+      <details class="mcat">
+        <summary>Premium</summary>
+        <div class="mitem"><div class="n"><b>Coco Channel</b><small>Gin Malfy, puree kokosowe i truskawkowe, bitters różany</small></div></div>
+        <div class="mitem"><div class="n"><b>Matcha</b><small>Wódka Belvedere, matcha, likier z białej czekolady</small></div></div>
+        <div class="mitem"><div class="n"><b>Violet Sky</b><small>Wódka Ciroc, curacao, syrop lawendowy</small></div></div>
+        <div class="mitem"><div class="n"><b>La Rose Wow</b><small>Gin Malfy, różany bitters, prosecco, cytrusy</small></div></div>
+        <div class="mitem"><div class="n"><b>Chivas Candy Shop</b><small>Chivas Regal, likier Amaretto, wata cukrowa</small></div></div>
+        <div class="mitem"><div class="n"><b>Chocolate Martini</b><small>Wódka Beluga, likier czekoladowy, Kinder Bueno</small></div></div>
+        <div class="mitem"><div class="n"><b>24K Pornstar</b><small>Wódka Belvedere, wanilia, marakuja, złoto 24K</small></div></div>
+        <div class="mitem"><div class="n"><b>Sazerac</b><small>Koniak Meukow, absynt, angostura</small></div></div>
+      </details>
+      <details class="mcat">
+        <summary>Spróbuj</summary>
+        <div class="mitem"><div class="n"><b>Melo Jager Spritz</b><small>Melonade, Jägermeister, prosecco</small></div></div>
+        <div class="mitem"><div class="n"><b>Golden Chill</b><small>Wódka, grejpfrut, cytryna, syrop cukrowy</small></div></div>
+        <div class="mitem"><div class="n"><b>Lemon Drop Martini</b><small>Wódka, cytryna, limonka, żurawina</small></div></div>
+        <div class="mitem"><div class="n"><b>Mai Tai</b><small>Jasny i ciemny rum, likier pomarańczowy, migdał</small></div></div>
+      </details>
+    </div>
+    <div class="mcol-photos" aria-hidden="true">
+      <img src="images/drink-02.webp" alt="">
+      <img src="images/drink-05.webp" alt="">
+      <img src="images/drink-extra-01.webp" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="lunch">
+  <div class="chapter-head reveal"><span class="no">Rozdział 03</span><h2>Dania dnia na <em>szybki lunch</em></h2></div>
+  <div class="lunch-grid reveal">
+    <div class="mosaic">
+      <img class="big" src="images/lunch-01.webp" alt="Zrazy zawijane z ziemniakami i czerwoną kapustą">
+      <img class="sq" src="images/lunch-02.webp" alt="Pulpety w sosie pomidorowym z ryżem">
+      <img class="sq" src="images/lunch-03.webp" alt="Mięso w sosie z kopytkami i czerwoną kapustą">
+    </div>
+    <div>
+      <p class="intro-lead" style="margin-bottom:0">Od poniedziałku do piątku w godzinach 12:00–16:30 serwujemy lunchowe wersje naszych dań — pełne porcje pasty i dania mięsne, w cenie dopasowanej do codziennego obiadu. Restauracyjna jakość, bez pośpiechu.</p>
+      <div class="pill" style="margin-top:1.4rem;display:inline-flex;gap:.5rem;padding:.5rem 1rem;border:1px solid rgba(27,24,21,.18);border-radius:40px;font-size:.85rem;color:var(--wine)">🕐 Pon–Pt · 12:00–16:30</div>
+    </div>
+  </div>
+</section>
+
+<section class="band"><div class="wrap"><blockquote>„Każdy talerz, który do was trafia, jest przygotowany z serca i bez przypadku."</blockquote></div></section>
+
+<section class="wrap" id="ludzie">
+  <div class="chapter-head reveal"><span class="no">Rozdział 04</span><h2>Trzech przyjaciół <em>z Łowicza</em></h2></div>
+  <div class="split reveal">
+    <div class="photo-group">
+      <img src="images/team-momenty.webp" alt="Zespół Momenty">
+      <div class="photo-second"><img src="images/gallery-03.webp" alt="Karta dań Momenty"></div>
+    </div>
+    <div>
+      <p class="big">Jan Poński, Dawid Kacprzak, Tomasz Wasilewski. Rodowici łowiczanie, którzy otworzyli restaurację, jakiej sami szukali.</p>
+      <p>Bez kompromisów w kuchni, w ciepłym, kameralnym wnętrzu. Naszą pastę wyrabiamy tu, teraz, dzisiaj rano.</p>
+      <p>Mięso pochodzi od lokalnych dostawców, których znamy po imieniu. Każde danie jest autorskie, nie z karty sieciowej. Otwarci od 19 grudnia 2024.</p>
+      <div class="stats">
+        <div><div class="v">4.3</div><div class="l">ocena Google</div></div>
+        <div><div class="v">85</div><div class="l">miejsc w lokalu</div></div>
+        <div><div class="v">220</div><div class="l">na event</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews wrap">
+  <div class="chapter-head reveal"><span class="no">Głosy</span><h2>Co mówią <em>Goście</em></h2></div>
+  <div class="cards2">
+    <div class="rev reveal"><div class="stars">★★★★★</div><p>Za każdym razem strzał w dziesiątkę. Jedzenie oraz obsługa wyśmienita, stek z polędwicy po prostu pyszny, drinki z karty sezonowej zasługują na poklaski.</p><div class="who">E.M. · grudzień 2025 · Google</div></div>
+    <div class="rev reveal"><div class="stars">★★★★★</div><p>Restauracja Momenty to prawdziwa perełka. Świetna atmosfera, klimatyczne wnętrze i bardzo miła, profesjonalna obsługa. Jedzenie absolutnie rewelacyjne.</p><div class="who">C.Ś. · styczeń 2026 · Google</div></div>
+    <div class="rev reveal"><div class="stars">★★★★★</div><p>Jesteśmy pod wrażeniem, że w końcu w Łowiczu powstał lokal z prawdziwego zdarzenia. Mega przytulnie, mega smacznie.</p><div class="who">S. · październik 2025 · Google</div></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="gallery-head reveal">
+    <div class="chapter-head" style="border:0;padding-top:0;margin-bottom:0"><span class="no">Atmosfera</span><h2>163 źródła światła, <em>jeden nastrój</em></h2></div>
+    <a class="ig-follow" href="https://www.instagram.com/momenty_restauracja" target="_blank" rel="noopener">
+      <span class="ig-handle">@momenty_restauracja</span>
+      <span class="ig-btn">Obserwuj</span>
+    </a>
+  </div>
+  <div class="gallery" style="margin-top:2.5rem">
+    <img class="tall reveal" src="images/gallery-01.webp" alt="Momenty galeria 1">
+    <img class="wide reveal" src="images/gallery-02.webp" alt="Momenty galeria 2">
+    <img class="reveal" src="images/gallery-03.webp" alt="Momenty galeria 3">
+    <img class="reveal" src="images/gallery-04.webp" alt="Momenty galeria 4">
+    <img class="wide reveal" src="images/gallery-05.webp" alt="Momenty galeria 5">
+    <img class="reveal" src="images/gallery-06.webp" alt="Momenty galeria 6">
+    <img class="reveal" src="images/gallery-07.webp" alt="Momenty galeria 7">
+    <img class="reveal" src="images/gallery-08.webp" alt="Momenty galeria 8">
+  </div>
+</section>
+
+<section class="band"><div class="wrap"><blockquote>„To miejsce spotkań, wspomnień i ważnych chwil."</blockquote></div></section>
+
+<section class="wrap" id="eventy">
+  <div class="chapter-head reveal"><span class="no">Rozdział 05</span><h2>Centrum kultury <em>Łowicza</em></h2></div>
+  <p class="intro-lead reveal">Jedyny lokal w regionie łowickim łączący restaurację premium z centrum kulturalnym. Kolacja w Ciemności, koncerty, przyjęcia, konferencje. Każda okazja zasługuje na wyjątkowe miejsce.</p>
+  <div class="ev-cards">
+    <div class="ev reveal" id="ev-na-zywo"><img src="images/kolacja-w-ciemnosci.webp" alt="Kolacja w Ciemności"><div class="b"><h3>Momenty na żywo</h3><p>Kolacja w Ciemności, koncerty na żywo, stand-up comedy i warsztaty kulinarne. Unikat w regionie.</p></div></div>
+    <div class="ev reveal" id="ev-firmowe"><img src="images/gallery-06.webp" alt="Eventy firmowe"><div class="b"><h3>Eventy Firmowe</h3><p>Sala konferencyjna z cateringiem restauracyjnym. Wigilia, integracja, szkolenie.</p></div></div>
+    <div class="ev reveal" id="ev-wesela"><img src="images/wesele-lat-2000.webp" alt="Przyjęcia weselne"><div class="b"><h3>Przyjęcia Weselne</h3><p>Kameralne wesele w klimatycznym wnętrzu — indywidualne menu i wystrój.</p></div></div>
+    <div class="ev reveal" id="ev-urodziny"><img src="images/weekend-kobiet.webp" alt="Urodziny"><div class="b"><h3>Urodziny</h3><p>Wynajem części sali, autorskie drinki i menu na zamówienie dla całej ekipy.</p></div></div>
+  </div>
+</section>
+
+<section class="wrap" id="blog">
+  <div class="chapter-head reveal"><span class="no">Blog</span><h2>Poczytaj o <em>Momentach</em></h2></div>
+  <div class="blog-grid">
+    <div class="blog-card reveal"><img src="images/menu-burrata.webp" alt="Gdzie zjeść w Łowiczu?"><div class="b"><h3>Gdzie zjeść w Łowiczu?</h3><p>Nasz przegląd tego, co warto spróbować w mieście.</p><span class="more">Czytaj →</span></div></div>
+    <div class="blog-card reveal"><img src="images/kolacja-w-ciemnosci.webp" alt="Kolacja w Ciemności"><div class="b"><h3>Kolacja w Ciemności — czego się spodziewać</h3><p>Jak wygląda nasze najbardziej niezwykłe wydarzenie.</p><span class="more">Czytaj →</span></div></div>
+    <div class="blog-card reveal"><img src="images/menu-smash-burger.webp" alt="Najlepsze burgery w Łowiczu"><div class="b"><h3>Najlepsze burgery w Łowiczu?</h3><p>Sekret naszej autorskiej bułki i sosu Momenty.</p><span class="more">Czytaj →</span></div></div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <p class="lbl reveal" style="margin-bottom:1rem">Jak do nas trafić</p>
+    <h2 class="reveal" style="margin-bottom:2rem">Dojazd i <em>godziny</em></h2>
+    <div class="grid reveal">
+      <iframe src="https://maps.google.com/maps?q=place_id:ChIJC5X6BDLnG0cRoZp0vuXYIxE&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa dojazdu do Momenty"></iframe>
+      <div>
+        <div class="details">
+          <div><div class="lbl2">Adres</div><div class="v">Zduńska 52, 99-400 Łowicz</div></div>
+          <div><div class="lbl2">Telefon</div><div class="v"><a href="tel:694947119">694 947 119</a></div></div>
+          <div><div class="lbl2">E-mail</div><div class="v"><a href="mailto:momentylowicz@gmail.com">momentylowicz@gmail.com</a></div></div>
+        </div>
+        <div class="hours">
+          <div class="h"><span>Poniedziałek – Piątek</span><b>12:00 – 22:00</b></div>
+          <div class="h"><span>Kuchnia lunch</span><b>12:00 – 16:30</b></div>
+          <div class="h"><span>Sobota – Niedziela</span><b>do ostatniego gościa</b></div>
+        </div>
+        <p style="font-size:.85rem;color:var(--muted);margin-top:1rem">Rezerwacja nie jest wymagana, zawsze mamy wolne stoliki.</p>
+        <a class="btn" style="margin-top:1.4rem;display:inline-block" href="https://www.google.com/maps/search/?api=1&query=MOMENTY%20-%20Restauracja%20%26%20Bar&query_place_id=ChIJC5X6BDLnG0cRoZp0vuXYIxE" target="_blank" rel="noopener">Wyznacz trasę</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="f">
+  <div class="wrap">
+    <div class="logo">momenty</div>
+    <p>Autorska kuchnia włoska, cocktail bar i centrum kultury w Łowiczu. Zduńska 52, otwarte do ostatniego gościa.</p>
+    <div class="soc"><a href="https://www.facebook.com/p/Momenty-Bar-Restaurant-61562002215299" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/momenty_restauracja" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@momenty.restauracja" target="_blank" rel="noopener">TikTok</a></div>
+    <div class="cr">© 2026 Momenty Bar & Restaurant. Wszelkie prawa zastrzeżone. · Mockup kierunku „Editorial / storytelling"</div>
+  </div>
+</footer>
+
+<script>
+  // Mobilny hamburger
+  (function () {
+    var btn = document.getElementById('hamburgerBtn');
+    var menu = document.getElementById('mobileMenu');
+    var closeBtn = document.getElementById('mobileMenuClose');
+    if (!btn || !menu) return;
+    function openMenu() {
+      menu.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.documentElement.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = '';
+    }
+    btn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  })();
+
+  // Scroll-reveal animacje
+  (function () {
+    var targets = document.querySelectorAll('.reveal, .fade-in');
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    targets.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
